@@ -1,0 +1,117 @@
+{% extends 'customer/base.html' %} {% block content %}
+
+<style>
+  .order-address-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: "Poppins", sans-serif;
+  }
+  .order-address-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #2c3e50;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  form p {
+    margin-bottom: 15px;
+  }
+  form input[type="text"],
+  form input[type="number"],
+  form select {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  form button {
+    margin-top: 25px;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form button:hover {
+    background-color: #2980b9;
+  }
+  /* Popup styles */
+  #login-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  #login-popup .popup-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+  }
+  #login-popup h3 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #e74c3c;
+  }
+  #login-popup p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: #555;
+  }
+  #login-popup a {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+  }
+  #login-popup a:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<div class="order-address-container">
+  <h2>Enter Your Address</h2>
+
+  {% if show_login_popup %}
+  <div id="login-popup">
+    <div class="popup-content">
+      <h3>Login Required</h3>
+      <p>You must be logged in to proceed with your order.</p>
+      <a href="{% url 'login' %}">Login Now</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <form method="post" action="">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+{% endblock content %}

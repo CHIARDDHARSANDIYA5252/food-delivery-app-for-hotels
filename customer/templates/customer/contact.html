@@ -1,0 +1,151 @@
+{% extends 'customer/base.html' %} 
+{% block content %}
+<style>
+  /* Contact page background styling */
+  body.contact-page {
+    background-image: url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  /* Container for the contact section */
+  .contact-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #222;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Heading for the contact page */
+  .contact-container h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  /* Paragraph styling for description */
+  .contact-container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* Contact information section styling */
+  .contact-info {
+    margin-top: 30px;
+  }
+
+  /* Subheading styling for contact information */
+  .contact-info h2 {
+    font-size: 2rem;
+    color: #34495e;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 5px;
+  }
+
+  /* Styling for the list of contact information */
+  .contact-info ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  /* List item styling */
+  .contact-info ul li {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+
+  /* Styling for links in contact information */
+  .contact-info ul li a {
+    color: #2980b9;
+    text-decoration: none;
+  }
+
+  /* Hover effect for links */
+  .contact-info ul li a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+<div class="contact-container">
+  <h1>Contact Us</h1>
+  <p>
+    We would love to hear from you! Whether you have questions, feedback, or
+    partnership inquiries, please reach out to us through any of the following
+    methods.
+  </p>
+
+  <div class="contact-info">
+    <h2>Phone</h2>
+    <ul>
+      <!-- Contact phone number link -->
+      <li><a href="tel:+919503119563">+91 95031 19563</a></li>
+    </ul>
+
+    <h2>Email</h2>
+    <ul>
+      <!-- Email addresses for contact -->
+      <li><a href="mailto:info@deliver.com">info@deliver.com</a></li>
+      <li><a href="mailto:support@deliver.com">support@deliver.com</a></li>
+      <li><a href="mailto:sales@deliver.com">sales@deliver.com</a></li>
+    </ul>
+
+    <h2>Address</h2>
+    <!-- Company address -->
+    <p>123 Foodie Lane,<br />Solapur City,<br />Flavor State, 123456</p>
+
+    <h2>Follow Us</h2>
+    <ul>
+      <!-- Social media links -->
+      <li>
+        <a
+          href="https://www.facebook.com/deliver"
+          target="_blank"
+          rel="noopener"
+          >Facebook</a
+        >
+      </li>
+      <li>
+        <a href="https://twitter.com/deliver" target="_blank" rel="noopener"
+          >Twitter</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.instagram.com/deliver"
+          target="_blank"
+          rel="noopener"
+          >Instagram</a
+        >
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/company/deliver"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- JavaScript to add contact-page class to body -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("contact-page");
+  });
+</script>
+
+{% endblock content %}

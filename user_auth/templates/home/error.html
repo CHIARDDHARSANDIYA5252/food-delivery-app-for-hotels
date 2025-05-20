@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Error</title>
+    <!-- Including Bootstrap for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container text-center">
+        <!-- Heading displaying the login failure message -->
+        <h1 class="mt-5 text-danger">Login Failed</h1>
+        
+        <!-- Displaying the error message passed from the backend (e.g., invalid credentials) -->
+        <p class="mt-3">{{ error_message }}</p>
+        
+        <!-- Button to allow the user to try logging in again -->
+        <a href="{% url 'login' %}" class="btn btn-primary">Try Again</a>
+    </div>
+</body>
+</html>

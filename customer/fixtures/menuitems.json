@@ -1,0 +1,82 @@
+[
+  {
+    "model": "customer.menuitem",
+    "pk": 1,
+    "fields": {
+      "name": "Pizza",
+      "description": "Delicious cheese and tomato pizza with fresh basil.",
+      "price": "450.00",
+      "image_url": "/static/images/pizza.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 2,
+    "fields": {
+      "name": "Burger",
+      "description": "Juicy burger with lettuce, tomato, and cheese.",
+      "price": "450.00",
+      "image_url": "/static/images/burger.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 3,
+    "fields": {
+      "name": "Sandwich",
+      "description": "Fresh sandwich with ham, cheese, and vegetables.",
+      "price": "500.00",
+      "image_url": "/static/images/sandwich.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 4,
+    "fields": {
+      "name": "Garlic Bread",
+      "description": "Classic Italian garlic bread.",
+      "price": "400.00",
+      "image_url": "/static/images/garlic_bread.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 5,
+    "fields": {
+      "name": "Chicken Tikka",
+      "description": "Spicy and tender chicken tikka marinated with aromatic spices.",
+      "price": "550.00",
+      "image_url": "/static/images/chicken_tikka.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 6,
+    "fields": {
+      "name": "Pav Bhaji",
+      "description": "Flavorful mixed vegetable curry served with buttered pav bread.",
+      "price": "350.00",
+      "image_url": "/static/images/pavbhaji.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 7,
+    "fields": {
+      "name": "Dosa",
+      "description": "Crispy and golden South Indian dosa served with chutneys and sambar.",
+      "price": "300.00",
+      "image_url": "/static/images/dosa.jpg"
+    }
+  },
+  {
+    "model": "customer.menuitem",
+    "pk": 8,
+    "fields": {
+      "name": "Bhel Puri",
+      "description": "Popular Indian street food with puffed rice, veggies & tangy sauce.",
+      "price": "250.00",
+      "image_url": "/static/images/bhelpuri.jpg"
+    }
+  }
+]

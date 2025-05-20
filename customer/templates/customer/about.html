@@ -1,0 +1,150 @@
+{% extends 'customer/base.html' %}  {# This page uses the main layout called 'base.html' #}
+
+{% block content %}  {# This is where the main page content will go #}
+
+<!-- Style part: This makes the page look nice -->
+<style>
+  /* The whole body will have a nice background image */
+  body.about-page {
+    background-image: url("https://images.unsplash.com/photo-1497493292307-31c376b6e479?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  /* This is the box that holds all the about info */
+  .about-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.9); /* White with a little see-through */
+    border-radius: 12px; /* Makes the corners round */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #333; /* Text color */
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Big title */
+  .about-container h1 {
+    font-size: 3rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  /* Section titles */
+  .about-container h2 {
+    font-size: 2rem;
+    color: #34495e;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 5px;
+  }
+
+  /* Paragraphs (normal text) */
+  .about-container p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  /* Bulleted lists */
+  .about-container ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  /* Each list item */
+  .about-container ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+
+  /* Blue highlight text */
+  .highlight {
+    color: #2980b9;
+    font-weight: 600;
+  }
+</style>
+
+<!-- This is the box where the About Us text shows -->
+<div class="about-container">
+  <h1>About Us</h1>
+  <p>
+    Welcome to <span class="highlight">Deliver</span>, your trusted partner in
+    bringing delicious meals right to your doorstep...
+  </p>
+
+  <h2>Our Mission</h2>
+  <p>
+    Our mission is to make food delivery fast, easy, and fun for everyone...
+  </p>
+
+  <h2>What We Offer</h2>
+  <ul>
+    <li>A wide variety of foods from top restaurants.</li>
+    <li>You can order online and track it live.</li>
+    <li>Fast and friendly delivery drivers.</li>
+    <li>Special discounts for regular customers.</li>
+    <li>We help you anytime — 24/7!</li>
+  </ul>
+
+  <h2>Our Values</h2>
+  <p>We believe in:</p>
+  <ul>
+    <li><strong>Quality:</strong> Fresh and tasty food only.</li>
+    <li><strong>Customer Satisfaction:</strong> Making you happy always.</li>
+    <li><strong>Innovation:</strong> Always improving our app and service.</li>
+    <li><strong>Community:</strong> Supporting local restaurants and people.</li>
+  </ul>
+
+  <h2>Meet Our Team</h2>
+  <p>
+    We are food lovers and tech experts who work hard to get your order right.
+  </p>
+
+  <h2>How It Works</h2>
+  <p>Ordering food is very easy:</p>
+  <ul>
+    <li>Look at all the restaurants and choose what you like.</li>
+    <li>Pick your food and make your order.</li>
+    <li>Pay on our app or website.</li>
+    <li>Watch your food come to you!</li>
+    <li>Eat and enjoy!</li>
+  </ul>
+
+  <h2>Customer Testimonials</h2>
+  <p>Here’s what happy customers say:</p>
+  <ul>
+    <li>"Quick and fresh every time!" – Sarah K.</li>
+    <li>"So many choices. I love it!" – James L.</li>
+    <li>"Great support team!" – Maria P.</li>
+  </ul>
+
+  <h2>Join Us</h2>
+  <p>
+    Want to eat or sell food with us? Join our family today!
+  </p>
+
+  <h2>Contact Us</h2>
+  <p>
+    Got questions or ideas? Let us know. We are here to help.
+  </p>
+
+  <p>Thanks for choosing Deliver. We are happy to serve you!</p>
+</div>
+
+<!-- This small script adds the background to the body only for this page -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.add("about-page");
+  });
+</script>
+
+{% endblock content %}  {# This ends the content block #}

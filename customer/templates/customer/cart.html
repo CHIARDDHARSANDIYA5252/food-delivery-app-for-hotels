@@ -1,0 +1,265 @@
+{% extends 'customer/base.html' %} 
+{% block content %}
+
+<h2
+  style="
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    color: #2c3e50;
+  "
+>
+  🛒 Your Cart
+</h2>
+
+<style>
+  /* Style for the cart container */
+  .cart-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Styling the table for cart items */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling table headers and data cells */
+  th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  /* Background color for headers */
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Styling images of cart items */
+  img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* Styling for the total price display */
+  .total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-align: right;
+  }
+
+  /* If the cart is empty, style this message */
+  .empty-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #7f8c8d;
+  }
+
+  /* Styling the quantity change form (buttons and input) */
+  .quantity-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Quantity button styles */
+  .quantity-form button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  /* Styling the delete button */
+  .delete-button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  /* Hover effect for the delete button */
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+
+  /* Payment section container */
+  .payment-section {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: "Poppins", sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  /* Payment option styling */
+  .payment-option {
+    margin-right: 20px;
+  }
+
+  /* Payment submit button styling */
+  .payment-submit {
+    margin-top: 15px;
+  }
+
+  /* Add more items button styling */
+  .add-more-items {
+    display: block;
+    max-width: 900px;
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  /* Add more items link styling */
+  .add-more-items a {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Add more items link hover effect */
+  .add-more-items a:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<div class="cart-container">
+  {% if items %}
+  <!-- Cart items displayed in a table -->
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Image</th>
+        <th>Price (₹)</th>
+        <th>Quantity</th>
+        <th>Subtotal (₹)</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td>{{ item.menu_item.name }}</td>
+        <td>
+          <img
+            src="{{ item.menu_item.image_url }}"
+            alt="{{ item.menu_item.name }}"
+          />
+        </td>
+        <td>{{ item.menu_item.price }}</td>
+        <td>
+          {% with new_quantity=item.quantity|add:"-1" %}
+          <form
+            method="post"
+            action="{% url 'cart:update_cart_item' item.menu_item.id %}"
+            class="quantity-form"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              name="quantity"
+              value="{{ new_quantity }}"
+              {% if new_quantity < 1 %} disabled {% endif %}
+            >
+              -
+            </button>
+            <input
+              type="text"
+              name="quantity"
+              value="{{ item.quantity }}"
+              size="2"
+              readonly
+            />
+            <button
+              type="submit"
+              name="quantity"
+              value="{{ item.quantity|add:"1" }}"
+            >
+              +
+            </button>
+          </form>
+          {% endwith %}
+        </td>
+        <td>{{ item.subtotal|floatformat:2 }}</td>
+        <td>
+          <form
+            method="post"
+            action="{% url 'cart:remove_cart_item' item.menu_item.id %}"
+            class="delete-form"
+          >
+            {% csrf_token %}
+            <button type="submit" class="delete-button">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Display the total price -->
+  <div class="total">Total: ₹{{ total_price|floatformat:2 }}</div>
+
+  <!-- Link to add more items -->
+  <div class="add-more-items">
+    <a href="{% url 'menu' %}">Add More Items</a>
+  </div>
+
+  <!-- Payment Section -->
+  <div class="payment-section">
+    <h3>Select Payment Mode</h3>
+    <form id="payment-form" method="post" action="{% url 'cart:cart_detail' %}">
+      {% csrf_token %}
+      <label class="payment-option">
+        <input
+          type="radio"
+          name="payment_mode"
+          value="cash_on_delivery"
+          required
+          checked
+        />
+        Cash on Delivery
+      </label>
+      <div class="payment-submit">
+        <button type="submit">Proceed to Pay</button>
+      </div>
+    </form>
+  </div>
+
+  {% else %}
+  <!-- Message if the cart is empty -->
+  <div class="empty-cart">
+    Your cart is empty. Please add some items from the
+    <a href="{% url 'menu' %}">menu</a>.
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  // Custom payment form logic
+  document.getElementById('payment-form').addEventListener('submit', function(event) {
+    const paymentMode = document.querySelector('input[name="payment_mode"]:checked').value;
+    if (paymentMode === 'cash_on_delivery') {
+      event.preventDefault();
+      window.location.href = "{% url 'order_address' %}" + "?payment_mode=" + encodeURIComponent(paymentMode);
+    }
+  });
+</script>
+
+{% endblock content %}
